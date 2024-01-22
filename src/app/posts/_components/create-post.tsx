@@ -17,7 +17,6 @@ export default function CreatePost() {
   const [state, formAction] = useFormState(createPostAction, initialState);
 
   const inputRef = useRef<ElementRef<'input'>>(null);
-
   useEffect(() => {
     if (!state.success) {
       toast(state.message)
