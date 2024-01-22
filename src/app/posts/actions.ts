@@ -12,8 +12,9 @@ export async function createPostAction(prevState: { message: string, success: bo
 
   try {
     const validatedName = postNameSchema.parse(postName);
+
     await db.insert(posts).values({ name: validatedName }); // Insert into DB
-  
+
     revalidatePath('/posts'); // Revalidate page to see new content
     return { success: true, message: 'Successfully added a new post' };
   } catch (err) {
