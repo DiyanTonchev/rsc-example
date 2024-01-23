@@ -16,6 +16,7 @@ export async function createPostAction(prevState: { message: string, success: bo
     await db.insert(posts).values({ name: validatedName }); // Insert into DB
 
     revalidatePath('/posts'); // Revalidate page to see new content
+
     return { success: true, message: 'Successfully added a new post' };
   } catch (err) {
     return { success: false, message: 'Failed to add post' };
